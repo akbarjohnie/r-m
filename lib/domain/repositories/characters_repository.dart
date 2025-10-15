@@ -5,4 +5,6 @@ abstract interface class ICharactersRepository {
 
   Future<void> addToFavorite(CharacterModel character);
   Future<void> deleteFromFavorite(int id);
+
+  Future<List<CharacterModel>> getFavorites();
 }

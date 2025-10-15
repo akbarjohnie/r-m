@@ -37,8 +37,17 @@ class DependenciesProvider extends StatelessWidget {
         RepositoryProvider(
           create: (context) => LocationsRemoteDatasourse(context.read<Dio>()),
         ),
+        RepositoryProvider(
+          create: (context) => FavoritesDatabase(),
+        ),
+        RepositoryProvider<IFavoritesLocalsource>(
+          create: (context) => FavoritesLocalsourceImpl(context.read<FavoritesDatabase>()),
+        ),
         RepositoryProvider<ICharactersRepository>(
-          create: (context) => CharactersRepositoryImpl(context.read()),
+          create: (context) => CharactersRepositoryImpl(
+            context.read(),
+            context.read(),
+          ),
         ),
         RepositoryProvider<ILocationsRepository>(
           create: (context) => const LocationsRepositoryImpl(),

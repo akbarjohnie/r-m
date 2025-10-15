@@ -31,7 +31,6 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
       characters: res.$1,
       loadNext: res.$2,
     ));
-    log(state.loadNext.toString());
   }
 
   Future<void> _onLoadNextCharactersEvent(_LoadNextCharactersEvent event, Emitter<CharactersState> emit) async {

@@ -4,9 +4,11 @@ import 'package:rick_and_morty/domain/domain.dart';
 final class CharactersRepositoryImpl implements ICharactersRepository {
   const CharactersRepositoryImpl(
     this._datasourse,
+    this._localSource,
   );
 
   final CharacterRemoteDatasourse _datasourse;
+  final IFavoritesLocalsource _localSource;
 
   @override
   Future<(List<CharacterModel>, bool)> loadCharacters(int page) async {
@@ -19,16 +21,13 @@ final class CharactersRepositoryImpl implements ICharactersRepository {
 
     return (results, loadNext);
   }
-  
+
   @override
-  Future<void> addToFavorite(CharacterModel character) {
-    // TODO: implement addToFavorite
-    throw UnimplementedError();
-  }
-  
+  Future<void> addToFavorite(CharacterModel character) => _localSource.saveCharater(character);
+
   @override
-  Future<void> deleteFromFavorite(int id) {
-    // TODO: implement deleteFromFavorite
-    throw UnimplementedError();
-  }
+  Future<void> deleteFromFavorite(int id) => _localSource.removeCharater(id);
+
+  @override
+  Future<List<CharacterModel>> getFavorites() => _localSource.getFavorites();
 }

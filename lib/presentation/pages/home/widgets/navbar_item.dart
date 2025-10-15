@@ -21,7 +21,7 @@ class CharactersNavItem extends HomeNavItem {
   CharactersNavItem()
       : super(
           iconBuilder: (_) => const Icon(
-            Icons.home_outlined,
+            Icons.home,
           ),
           routePath: 'characters',
         );

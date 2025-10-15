@@ -47,7 +47,6 @@ class _CharactersPageState extends State<CharactersPage> {
     if (!_pageBloc.state.loadNext) return;
 
     if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent * 0.6) {
-      log('Scrolled');
       _pageBloc.add(const CharactersEvent.loadNextCharactersPage());
     }
   }
@@ -77,6 +76,7 @@ class _CharactersPageState extends State<CharactersPage> {
                 builder: (context, state) => CharacterCard.fromModel(
                   model: state.characters[index],
                   onFavoriteTap: _onFavoriteTap,
+                  isFavorite: state.favorites.contains(state.characters[index].id),
                 ),
               ),
             );

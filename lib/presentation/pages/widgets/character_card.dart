@@ -73,7 +73,7 @@ class CharacterCard extends StatelessWidget {
                 ),
                 onPressed: () => onFavoriteTap?.call(id),
                 icon: Icon(
-                  isFavorite ? Icons.add : Icons.add_outlined,
+                  isFavorite ? Icons.favorite : Icons.favorite_outline,
                   color: Colors.deepPurple,
                 ),
               ),
