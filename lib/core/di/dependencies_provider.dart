@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:provider/provider.dart';
 import 'package:rick_and_morty/data/data.dart';
+import 'package:rick_and_morty/data/datasources/local/databases/db.dart';
 import 'package:rick_and_morty/domain/domain.dart';
 
 class DependenciesProvider extends StatelessWidget {
@@ -27,6 +28,8 @@ class DependenciesProvider extends StatelessWidget {
             ])
             ..options.baseUrl = 'https://rickandmortyapi.com',
         ),
+
+        /// [Remote Sourses]
         RepositoryProvider(
           create: (context) => CharacterRemoteDatasourse(context.read<Dio>()),
           lazy: false,
@@ -37,14 +40,27 @@ class DependenciesProvider extends StatelessWidget {
         RepositoryProvider(
           create: (context) => LocationsRemoteDatasourse(context.read<Dio>()),
         ),
+
+        /// [Local Databases]
+
         RepositoryProvider(
           create: (context) => FavoritesDatabase(),
         ),
+        RepositoryProvider(
+          create: (context) => CharactersDatabase(),
+        ),
+
+        /// [Local Sourses]
         RepositoryProvider<IFavoritesLocalsource>(
           create: (context) => FavoritesLocalsourceImpl(context.read<FavoritesDatabase>()),
         ),
+        RepositoryProvider<ICharactersLocalSource>(
+          create: (context) => CharactersLocalSourceImpl(context.read<CharactersDatabase>()),
+        ),
+
         RepositoryProvider<ICharactersRepository>(
           create: (context) => CharactersRepositoryImpl(
+            context.read(),
             context.read(),
             context.read(),
           ),
