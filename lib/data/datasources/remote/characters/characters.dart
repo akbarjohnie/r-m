@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:rick_and_morty/core/core.dart';
-import 'package:rick_and_morty/data/models/models.dart';
+import 'package:rick_and_morty/data/data.dart';
 
 part 'characters.g.dart';
 
@@ -12,7 +12,7 @@ abstract class CharacterRemoteDatasourse {
     String baseUrl,
   }) = _CharacterRemoteDatasourse;
 
-  @GET('/api/character')
+  @GET(CharactersEndpoints.getListCharacters)
   Future<Pagination<CharacterModel>> getCharacters({
     @Query('page') int? page,
     @Query('name') String? name,
@@ -22,12 +22,12 @@ abstract class CharacterRemoteDatasourse {
     @Query('gender') CharacterGender? gender,
   });
 
-  @GET('/api/character/{id}')
+  @GET(CharactersEndpoints.getCharacter)
   Future<CharacterModel> getCharacter(
     @Path() int id,
   );
 
-  @GET('/api/character/{ids}')
+  @GET(CharactersEndpoints.getSomeCharacters)
   Future<List<CharacterModel>> getMultipleCharacters(
     @Path() String ids,
   );

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:rick_and_morty/core/core.dart';
-import 'package:rick_and_morty/data/models/models.dart';
+import 'package:rick_and_morty/data/data.dart';
 
 part 'locations.g.dart';
 
@@ -12,7 +12,7 @@ abstract class LocationsRemoteDatasourse {
     String baseUrl,
   }) = _LocationsRemoteDatasourse;
 
-  @GET('/api/location')
+  @GET(LocationEndpoints.getListLocations)
   Future<Pagination<LocationsModel>> getLocations({
     @Query('page') int? page,
     @Query('name') String? name,
@@ -20,12 +20,12 @@ abstract class LocationsRemoteDatasourse {
     @Query('dimension') String? dimension,
   });
 
-  @GET('/api/location/{id}')
+  @GET(LocationEndpoints.getLocation)
   Future<LocationsModel> getLocation(
     @Path() int id,
   );
 
-  @GET('/api/location/{id}')
+  @GET(LocationEndpoints.getSomeLocations)
   Future<List<LocationsModel>> getMultipleLocation(
     @Path() String ids,
   );

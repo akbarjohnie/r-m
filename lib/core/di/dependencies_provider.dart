@@ -42,7 +42,6 @@ class DependenciesProvider extends StatelessWidget {
         ),
 
         /// [Local Databases]
-
         RepositoryProvider(
           create: (context) => FavoritesDatabase(),
         ),

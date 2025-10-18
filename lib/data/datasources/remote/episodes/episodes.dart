@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:rick_and_morty/core/core.dart';
-import 'package:rick_and_morty/data/models/models.dart';
+import 'package:rick_and_morty/data/data.dart';
 
 part 'episodes.g.dart';
 
@@ -12,19 +12,19 @@ abstract class EpisodesRemoteDatasourse {
     String baseUrl,
   }) = _EpisodesRemoteDatasourse;
 
-  @GET('/api/episode')
+  @GET(EpisodesEndpoints.getListEpisodes)
   Future<Pagination<EpisodesModel>> getEpisodes({
     @Query('page') int? page,
     @Query('name') String? name,
     @Query('episode') String? episode,
   });
 
-  @GET('/api/episode/{id}')
+  @GET(EpisodesEndpoints.getEpisode)
   Future<EpisodesModel> getEpisode(
     @Path() int id,
   );
 
-  @GET('/api/episode/{ids}')
+  @GET(EpisodesEndpoints.getSomeEpisodes)
   Future<List<EpisodesModel>> getMultipleEpisode(
     @Path() String ids,
   );
