@@ -1,2 +1,2 @@
-export 'characters.dart';
-export 'favorites.dart';
+export 'localsources/characters.dart';
+export 'localsources/favorites.dart';

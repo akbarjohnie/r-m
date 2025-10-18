@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rick_and_morty/core/core.dart';
 import 'package:rick_and_morty/data/data.dart';
 import 'package:rick_and_morty/domain/domain.dart';
 

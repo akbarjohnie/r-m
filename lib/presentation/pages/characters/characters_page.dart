@@ -2,16 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/common/common.dart';
-import 'package:rick_and_morty/core/core.dart';
 import 'package:rick_and_morty/presentation/blocs/blocs.dart';
 import 'package:rick_and_morty/presentation/pages/widgets/widgets.dart';
 
 @RoutePage()
 class CharactersPage extends StatefulWidget implements AutoRouteWrapper {
   const CharactersPage({super.key});
-
-  @override
-  State<CharactersPage> createState() => _CharactersPageState();
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -22,6 +18,9 @@ class CharactersPage extends StatefulWidget implements AutoRouteWrapper {
       child: this,
     );
   }
+
+  @override
+  State<CharactersPage> createState() => _CharactersPageState();
 }
 
 class _CharactersPageState extends State<CharactersPage> {
