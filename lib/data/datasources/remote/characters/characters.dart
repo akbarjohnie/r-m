@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:rick_and_morty/core/core.dart';
 import 'package:rick_and_morty/data/data.dart';
+import 'package:rick_and_morty/domain/domain.dart';
 
 part 'characters.g.dart';
 

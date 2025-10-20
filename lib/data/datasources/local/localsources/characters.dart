@@ -11,7 +11,6 @@ abstract interface class ICharactersLocalSource {
   Future<InfoModel?> getMetadata();
 }
 
-// Реализация интерфейса
 final class CharactersLocalSourceImpl implements ICharactersLocalSource {
   const CharactersLocalSourceImpl(this._db);
 

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:drift/drift.dart';
-import 'package:rick_and_morty/data/models/character/character.dart';
+import 'package:rick_and_morty/data/models/models.dart';
 
 class LocationConverter extends TypeConverter<CharacterLocationModel, String> {
   const LocationConverter();
